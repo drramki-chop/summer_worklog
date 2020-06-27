@@ -1,0 +1,28 @@
+---
+Author: sathya
+Date: 27/06/202
+Title: summer_2020_worklo
+---
+
+ The header used above is the YAML header. It starts and ends with "---".
+
+Sample code chuck to read a file and display a plot 
+The code chuck always starts and ends with (```) . And {} to specify the type of code that it contains 
+for example: the below contains r code specified with {r}.
+
+```{r}
+data <- read.csv("C:/Users/Narayanan/Desktop/TCGA_ Gene_Expression_and_Visualiztion/TCGA_gene_expression_data.csv")
+genes <- data[ , 1]
+rownames(data) <- genes
+data <- data [,-1]
+head(data)
+
+library(ggplot2)
+library(ggfortify)
+
+data1 <- t(data)
+ggplot(data = data1) +
+geom_boxplot(aes(y = data1[1:9,"A1BG"], x="")) +
+xlab("gene") +
+ylab("expression")
+```
